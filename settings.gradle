@@ -1,2 +1,3 @@
+include ':arch'
 include ':app'
 rootProject.name = "feed"

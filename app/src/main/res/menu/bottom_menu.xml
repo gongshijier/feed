@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/navigation_xigua"
+        android:icon="@drawable/ic_xigua"
+        android:title="西瓜视频"
+        />
+
+    <item
+        android:id="@+id/navigation_cinema"
+        android:icon="@drawable/ic_cinema"
+        android:title="放映厅"
+        />
+
+    <item
+        android:id="@+id/navigation_me"
+        android:icon="@drawable/ic_me"
+        android:title="我的"
+        />
+
+
+</menu>
