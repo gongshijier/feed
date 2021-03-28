@@ -2,20 +2,28 @@ package com.gongshijie.main
 
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.widget.ViewPager2
+import com.alibaba.android.arouter.launcher.ARouter
 import com.gongshijie.feed.BaseFragmentStateAdapter
 import com.gongshijie.feed.R
+import com.gongshijie.feed.api.CONSTANTS
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewPager: ViewPager2
     lateinit var tabLayout: TabLayout
     lateinit var fragmentAdapter: BaseFragmentStateAdapter
+    lateinit var bottomNav: BottomNavigationView
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,64 +39,39 @@ class MainActivity : AppCompatActivity() {
 
         viewPager = findViewById(R.id.viewpager)
 
-        fragmentAdapter = BaseFragmentStateAdapter(this, 10)
+        fragmentAdapter = BaseFragmentStateAdapter(this, CONSTANTS.newsTypeMap.size)
 
         viewPager.adapter = fragmentAdapter
 
         tabLayout = findViewById(R.id.tab_layout)
-        TabLayoutMediator(tabLayout, viewPager) {tab, position ->
-            when (position) {
-                0 -> {
-                    tab.text = "关注"
-                }
+        bottomNav = findViewById(R.id.nav_view)
 
-                1 -> {
-                    tab.text = "推荐"
-                }
+        val typeNews = CONSTANTS.newsTypeMap
+        val tabText = ArrayList(typeNews.values)
 
-                2 -> {
-                    tab.text = "娱乐"
-                }
-
-                3 -> {
-                    tab.text = "财经"
-                }
-
-                4 -> {
-                    tab.text = "体育"
-                }
-
-                5 -> {
-                    tab.text = "军事"
-                }
-
-                6 -> {
-                    tab.text = "科技"
-                }
-
-                7 -> {
-                    tab.text = "财经"
-                }
-
-                8 -> {
-                    tab.text = "时尚"
-                }
-
-                9 -> {
-                    tab.text = "游戏"
-                }
-
-                10 -> {
-                    tab.text = "汽车"
-                }
-
-                11 -> {
-                    tab.text = "健康"
-                }
-            }
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabText[position].toString()
         }.attach()
 
         tabLayout.getTabAt(1)?.select()
 
+        bottomNav.setOnNavigationItemSelectedListener { item ->
+            val fragmentManager = supportFragmentManager
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    viewPager.currentItem = 1
+                }
+                R.id.navigation_xigua -> {
+                    viewpager.currentItem = 12
+                }
+                R.id.navigation_cinema -> {
+                    ARouter.getInstance().build("/cinema/TKTKActivity").navigation()
+                }
+                R.id.navigation_me -> {
+                    ARouter.getInstance().build("/me/MeActivity").navigation()
+                }
+            }
+            true
+        }
     }
 }

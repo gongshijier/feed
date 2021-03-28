@@ -1,15 +1,32 @@
 package com.gongshijie.feed.api
 
 import android.util.Log
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.flow.Flow
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
-object FeedApi {
+object CONSTANTS {
 
     lateinit var data: MutableLiveData<List<NewsCell>>
     private var okHttpClient = OkHttpClient()
+    val newsTypeMap = linkedMapOf(
+        Pair("top", "国内"),
+        Pair("guonei", "推荐"),
+        Pair("guoji", "国际"),
+        Pair("yule", "娱乐"),
+        Pair("tiyu", "体育"),
+        Pair("junshi", "军事"),
+        Pair("keji", "科技"),
+        Pair("caijing", "财经"),
+        Pair("shishang", "时尚"),
+        Pair("youxi", "游戏"),
+        Pair("qiche", "汽车"),
+        Pair("jiankang", "健康"),
+        Pair("xigua", "西瓜")
+    )
 
     fun asyncFetchNewsCells(pageIndex: Int, pageCount: Int, type: String) {
 
@@ -31,10 +48,13 @@ object FeedApi {
 
             override fun onResponse(call: Call, response: Response) {
 
+
                 Log.i("FeedApi", "onResponse : ${response.body}")
 
                 val responseData = response.body?.string()
                 val json = JSONObject(responseData)
+                if (json.optInt("resultcode") == 112) return // No Data !
+
                 val newsList = json.getJSONObject("result").getJSONArray("data")
 
                 for (i in 0 until newsList.length()) {
@@ -47,12 +67,19 @@ object FeedApi {
                     val authorName = item.getString("author_name")
                     val url = item.getString("url")
                     val thumbnailPic = item.getString("thumbnail_pic_s")
-
                     val newsCell =
-                        NewsCell(uniqueKey, title, date, category, authorName, url, thumbnailPic)
+                        NewsCell(
+                            uniqueKey,
+                            title,
+                            date,
+                            category,
+                            authorName,
+                            url,
+                            thumbnailPic,
+                            type
+                        )
 
                     newsCellList.add(newsCell)
-
 
                 }
 
@@ -65,5 +92,6 @@ object FeedApi {
     fun asyncFetchNewsCells() = asyncFetchNewsCells(1, 20, "top")
 
     fun asyncFetchNewsCells(type: String) = asyncFetchNewsCells(1, 20, type)
+
 
 }
