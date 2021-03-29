@@ -8,7 +8,7 @@ buildscript {
         google()
         jcenter()
 
-        maven { url 'https://jitpack.io' }
+//        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
@@ -21,8 +21,8 @@ buildscript {
 
 
         //添加jitpack依赖 用来添加  methodTrace plugin
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath "com.github.gongshijier.feed:method-trace-plugin:$tracePluginVersion"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+//        classpath "com.github.gongshijier:feed:$tracePluginVersion"
 
         // bytex 宿主 依赖引入
         classpath "com.bytedance.android.byteX:base-plugin:$bytex_version"

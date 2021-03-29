@@ -1,4 +1,3 @@
-apply plugin: 'java'
 
 // JitPack Maven 将methodPlugin 发布到 JitPack
 apply plugin: 'com.github.dcendents.android-maven'
