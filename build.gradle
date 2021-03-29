@@ -3,12 +3,13 @@ apply plugin: 'com.alibaba.arouter'
 buildscript {
     ext.kotlin_version = "1.3.72"
     ext.bytex_version = "0.1.8"
-    ext.tracePluginVersion = "1.0"
+    ext.tracePluginVersion = "1.2"
     repositories {
+        maven { url 'https://jitpack.io' }
         google()
         jcenter()
 
-//        maven { url 'https://jitpack.io' }
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
@@ -22,18 +23,20 @@ buildscript {
 
         //添加jitpack依赖 用来添加  methodTrace plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-//        classpath "com.github.gongshijier:feed:$tracePluginVersion"
+//        classpath "com.github.gongshijier.feed:method-trace-plugin:1.2"
+
 
         // bytex 宿主 依赖引入
         classpath "com.bytedance.android.byteX:base-plugin:$bytex_version"
-   }
+    }
 }
 
 allprojects {
     repositories {
+        maven { url 'https://jitpack.io' }
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+
     }
 }
 

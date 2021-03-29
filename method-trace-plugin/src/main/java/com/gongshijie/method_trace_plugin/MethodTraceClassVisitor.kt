@@ -20,7 +20,7 @@ class MethodTraceClassVisitor(extension: MethodTraceExtension?) : BaseClassVisit
     ): MethodVisitor {
 
         val methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions)
-        if (true) {
+        if (false) {
             return TraceMethodVisitor(Opcodes.ASM6, methodVisitor, access, name, descriptor)
         }
 
