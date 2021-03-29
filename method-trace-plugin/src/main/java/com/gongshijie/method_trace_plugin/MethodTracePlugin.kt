@@ -8,7 +8,7 @@ import com.ss.android.ugc.bytex.pluginconfig.anno.PluginConfig
 import org.gradle.api.Project
 import org.objectweb.asm.tree.ClassNode
 
-@PluginConfig("method-trace-plugin")
+@PluginConfig("bytex.method-trace-plugin")
 class MethodTracePlugin : CommonPlugin<MethodTraceExtension, MethodTraceContext>() {
     override fun getContext(
         project: Project,

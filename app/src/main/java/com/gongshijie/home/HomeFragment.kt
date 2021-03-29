@@ -136,7 +136,6 @@ class HomeFragment : Fragment(), BGARefreshLayout.BGARefreshLayoutDelegate {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-s
                 Log.i("gongshijie", "onScroll ---------$dy")
                 if (dy > 1000) {
                     context?.let { Glide.with(it).pauseRequests() }
