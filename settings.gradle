@@ -1,4 +1,2 @@
-include ':method-trace-plugin'
-include ':arch'
 include ':app'
 rootProject.name = "feed"

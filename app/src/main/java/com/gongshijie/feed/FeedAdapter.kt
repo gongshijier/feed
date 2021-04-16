@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.gongshijie.feed.api.NewsCell
 
-class FeedAdapter(
-    var dataList: List<NewsCell>?,
+open class FeedAdapter(
+    open var dataList: List<NewsCell>?,
     private val activity: FragmentActivity?
 ) :
     RecyclerView.Adapter<BaseViewHolder>() {

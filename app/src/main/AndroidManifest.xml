@@ -18,8 +18,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.gongshijie.cinema.TKTKActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.gongshijie.me.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name="com.gongshijie.cinema.TKTKActivity" />
         <activity android:name="com.gongshijie.detail.DetailActivity" />
         <activity android:name="com.gongshijie.me.MeActivity" />
         <activity android:name="com.gongshijie.main.MainActivity">

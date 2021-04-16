@@ -14,13 +14,13 @@
     <item
         android:id="@+id/navigation_cinema"
         android:icon="@drawable/ic_cinema"
-        android:title="放映厅"
+        android:title="抖音"
         />
 
     <item
         android:id="@+id/navigation_me"
         android:icon="@drawable/ic_me"
-        android:title="我的"
+        android:title="热榜"
         />
 
 

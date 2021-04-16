@@ -26,10 +26,10 @@ class HomeViewModel() : ViewModel() {
         newsRepository.asyncFetchNewsDB(type)
     }
 
-     fun asyncFetchNewsNet(pageIndex: Int, pageCount: Int, type: String) {
-         viewModelScope.launch {
-             newsRepository.asyncFetchNewsNet(pageIndex, pageCount, type)
-         }
+    fun asyncFetchNewsNet(pageIndex: Int, pageCount: Int, type: String) {
+        viewModelScope.launch {
+            newsRepository.asyncFetchNewsNet(pageIndex, pageCount, type)
+        }
     }
 
     suspend fun asyncFetch(type: String) {

@@ -7,12 +7,25 @@
     tools:context="com.gongshijie.me.MeActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Me"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_hot_top"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="今日热榜"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/today_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:paddingTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

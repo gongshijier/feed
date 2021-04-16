@@ -2,10 +2,10 @@ apply plugin: 'com.alibaba.arouter'
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.3.72"
-    ext.bytex_version = "0.1.8"
-    ext.tracePluginVersion = "1.2"
+    ext.bytex_version = "0.2.7"
     repositories {
         maven { url 'https://jitpack.io' }
+
         google()
         jcenter()
 
@@ -21,13 +21,9 @@ buildscript {
         classpath "com.alibaba:arouter-register:1.0.2"
 
 
-        //添加jitpack依赖 用来添加  methodTrace plugin
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-//        classpath "com.github.gongshijier.feed:method-trace-plugin:1.2"
-
-
         // bytex 宿主 依赖引入
         classpath "com.bytedance.android.byteX:base-plugin:$bytex_version"
+        classpath "com.github.gongshijier.ByteX:method-trace:1.4"
     }
 }
 

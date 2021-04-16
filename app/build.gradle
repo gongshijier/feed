@@ -3,21 +3,25 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+def pluginEnable = true
+def pluginEnableInDebug = true
+def pluginLogLevel = "DEBUG"
 
 // apply ByteX宿主
 apply plugin: 'bytex'
 ByteX {
-    enable true
-    enableInDebug false
-    logLevel "DEBUG"
+    enable pluginEnable
+    enableInDebug pluginEnableInDebug
+    logLevel pluginLogLevel
 }
 
-//apply plugin: 'method-trace-plugin'
-//MethodTracePlugin{
-//    enable true
-//    enableInDebug true
-//    logLevel "DEBUG"
-//}
+apply plugin: 'bytex.method-trace'
+
+MethodTracePlugin {
+    enable pluginEnable
+    enableInDebug pluginEnableInDebug
+    whiteList = ['com/gongshijie']
+}
 
 
 android {
@@ -26,7 +30,7 @@ android {
 
     defaultConfig {
         applicationId "com.gongshijie.feed"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -47,6 +51,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -64,7 +72,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation project(path: ':method-trace-plugin')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -111,6 +118,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-
+    implementation "com.github.gongshijier.ByteX:method-trace-lib:1.4"
 
 }
