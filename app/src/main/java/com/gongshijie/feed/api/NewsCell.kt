@@ -13,7 +13,8 @@ data class NewsCell(
     @ColumnInfo(name = "authorName") var authorName: String,
     @ColumnInfo(name = "url") var url: String,
     @ColumnInfo(name = "thumbnailPic") var thumbnailPic: String,
-    @ColumnInfo(name = "type") var type: String
+    @ColumnInfo(name = "type") var type: String,
+    var record: Int
 ) {
 
 }

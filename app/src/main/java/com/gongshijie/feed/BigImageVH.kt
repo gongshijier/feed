@@ -20,6 +20,7 @@ class BigImageVH(view: View) : BaseViewHolder(view) {
         titleTextView.text = newsCell.title
         extraTextView.text = newsCell.authorName
         activity?.let { bindImage(newsCell, imageView, it) }
+        clickPosition = position
     }
 
     private fun bindImage(newsCell: NewsCell, imageView: ImageView, context: Context) {
@@ -32,6 +33,8 @@ class BigImageVH(view: View) : BaseViewHolder(view) {
         Log.i(TAG, "onClickItem")
         ARouter.getInstance().build("/app/detail/DetailActivity")
             .withString("url", cell.url)
-            .navigation();
+            .withString("record", cell.record.toString())
+            .withString("position", ""+clickPosition)
+            .navigation()
     }
 }

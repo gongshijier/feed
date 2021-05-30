@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.gongshijie.feed.api.NewsCell
 import com.gongshijie.feed.db.NewsCellDao
 
-@Database(entities = [NewsCell::class], version = 2)
+@Database(entities = [NewsCell::class], version = 4)
 abstract class NewsDB : RoomDatabase() {
     abstract fun newsDao(): NewsCellDao
 

@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tabLayout: TabLayout
     lateinit var fragmentAdapter: BaseFragmentStateAdapter
     lateinit var bottomNav: BottomNavigationView
+    lateinit var searchBar: LinearLayout
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = 0xFFFFFF
 
         viewPager = findViewById(R.id.viewpager)
+
+        searchBar = findViewById(R.id.search_bar)
 
         fragmentAdapter = BaseFragmentStateAdapter(this, CONSTANTS.newsTypeMap.size)
 
@@ -73,5 +77,9 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        searchBar.setOnClickListener({ v ->
+            ARouter.getInstance().build("/search/SearchActivity").navigation()
+        })
     }
 }

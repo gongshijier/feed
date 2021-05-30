@@ -6,6 +6,7 @@ package com.gongshijie.xigua
 
 val cn = "http://8.136.101.204"
 val us = "http://videos.jzvd.org"
+val baidu = "https://www.baidu.com/s?pn=1&cl=3&wd="
 
 var server_name: String = cn
 
@@ -79,65 +80,35 @@ val cndThumbnail = arrayOf(
 
 val videos = arrayOf(
     //width > height
-    "$server_name/v/饺子主动.mp4",
-    "$server_name/v/饺子运动.mp4",
-    "$server_name/v/饺子有活.mp4",
     "$server_name/v/饺子星光.mp4",
-    "$server_name/v/饺子想吹.mp4",
-    "$server_name/v/饺子汪汪.mp4",
     "$server_name/v/饺子偷人.mp4",
     "$server_name/v/饺子跳.mp4",
-    "$server_name/v/饺子受不了.mp4",
-    "$server_name/v/饺子三位.mp4",
     "$server_name/v/饺子起飞.mp4",
     "$server_name/v/饺子你听.mp4",
-    "$server_name/v/饺子可以了.mp4",
-    "$server_name/v/饺子还小.mp4",
-    "$server_name/v/饺子高兴.mp4",
     "$server_name/v/饺子高冷.mp4",
     "$server_name/v/饺子堵住了.mp4",
-    "$server_name/v/饺子都懂.mp4",
-    "$server_name/v/饺子打电话.mp4",
-    "$server_name/v/饺子不服.mp4",
     //height > width
-    "$server_name/v/饺子还年轻.mp4",
     "$server_name/v/饺子好妈妈.mp4",
     "$server_name/v/饺子可以.mp4",
     "$server_name/v/饺子挺住.mp4",
-    "$server_name/v/饺子想听.mp4",
     "$server_name/v/饺子真会.mp4",
     "$server_name/v/饺子真萌.mp4"
 
     )
 
 val thumbnails = arrayOf(
-    "$server_name/v/饺子主动.jpg",
-    "$server_name/v/饺子运动.jpg",
-    "$server_name/v/饺子有活.jpg",
     "$server_name/v/饺子星光.jpg",
-    "$server_name/v/饺子想吹.jpg",
-    "$server_name/v/饺子汪汪.jpg",
     "$server_name/v/饺子偷人.jpg",
     "$server_name/v/饺子跳.jpg",
-    "$server_name/v/饺子受不了.jpg",
-    "$server_name/v/饺子三位.jpg",
     "$server_name/v/饺子起飞.jpg",
     "$server_name/v/饺子你听.jpg",
-    "$server_name/v/饺子可以了.jpg",
-    "$server_name/v/饺子还小.jpg",
-    "$server_name/v/饺子高兴.jpg",
     "$server_name/v/饺子高冷.jpg",
     "$server_name/v/饺子堵住了.jpg",
-    "$server_name/v/饺子都懂.jpg",
-    "$server_name/v/饺子打电话.jpg",
-    "$server_name/v/饺子不服.jpg",
 
     //height > width
-    "$server_name/v/饺子还年轻.jpg",
     "$server_name/v/饺子好妈妈.jpg",
     "$server_name/v/饺子可以.jpg",
     "$server_name/v/饺子挺住.jpg",
-    "$server_name/v/饺子想听.jpg",
     "$server_name/v/饺子真会.jpg",
     "$server_name/v/饺子真萌.jpg"
 
@@ -177,16 +148,19 @@ val titles = arrayOf(
     "饺子真萌"
 )
 
+// 视频 封面 标题
 val vl1 = videos.copyOfRange(0, 9)
 val pl1 = thumbnails.copyOfRange(0, 9)
 val tl1 = titles.copyOfRange(0, 9)
 
-val vl2 = videos.copyOfRange(10, 20)
-val pl2 = thumbnails.copyOfRange(10, 20)
+// xigua
+val vl2 = videos.copyOfRange(0, 7)
+val pl2 = thumbnails.copyOfRange(0, 7)
 val tl2 = titles.copyOfRange(10, 20)
 
-val vl3 = videos.copyOfRange(20, 26)
-val pl3 = thumbnails.copyOfRange(20, 26)
+// tiktok
+val vl3 = videos.copyOfRange(7, 12)
+val pl3 = thumbnails.copyOfRange(7, 12)
 val tl3 = titles.copyOfRange(20, 26)
 
 

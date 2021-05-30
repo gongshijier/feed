@@ -20,6 +20,7 @@ class RightImageVH(itemView: View) : BaseViewHolder(itemView) {
     override fun bindViewHolder(position: Int, newsCell: NewsCell, activity: FragmentActivity?) {
         textView.text = newsCell.title
         extraInfo.text = newsCell.authorName
+        clickPosition = position
         activity?.let { bindImage(newsCell, imageView, it) }
     }
 
@@ -33,6 +34,8 @@ class RightImageVH(itemView: View) : BaseViewHolder(itemView) {
         Log.i(TAG, "onClickItem")
         ARouter.getInstance().build("/app/detail/DetailActivity")
             .withString("url", cell.url)
+            .withString("record", cell.record.toString())
+            .withString("position", ""+clickPosition)
             .navigation()
     }
 }

@@ -12,12 +12,21 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gongshijie.feed.R
 import com.gongshijie.feed.api.NewsCell
+import com.gongshijie.feed.api.RecordEvent
+import org.greenrobot.eventbus.EventBus
 
 @Route(path = "/app/detail/DetailActivity")
 class DetailActivity : AppCompatActivity() {
     lateinit var webView: WebView
+
     @Autowired(name = "url")
     lateinit var url: String
+
+    @Autowired(name = "record")
+    lateinit var record: String
+
+    @Autowired(name = "position")
+    lateinit var position: String
     private val TAG = "DetailActivity"
 
 
@@ -38,6 +47,28 @@ class DetailActivity : AppCompatActivity() {
         ARouter.getInstance().inject(this)
 
         webView.loadUrl(url)
+
+        webView.postDelayed({
+            webView.scrollBy(0, record.toFloat().toInt())
+        }, 300)
+
         Log.i(TAG, "newsCell : url -> $url")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            webView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                record = webView.scrollY.toString()
+            }
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("gongshijie", "详情页 onResume----" + this.toString())
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().post(RecordEvent(position.toFloat().toInt(), record.toFloat().toInt()))
     }
 }

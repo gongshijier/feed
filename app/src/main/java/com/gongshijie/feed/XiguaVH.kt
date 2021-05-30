@@ -22,8 +22,8 @@ class XiguaVH(itemView: View) : BaseViewHolder(itemView) {
         extraTextView.text = newsCell.authorName
         Glide.with(playBtn).load(R.drawable.ic_play).into(playBtn)
         activity?.let { bindImage(newsCell, imageView, it)
-
         }
+        clickPosition = position
     }
 
     private fun bindImage(newsCell: NewsCell, imageView: ImageView, context: Context) {

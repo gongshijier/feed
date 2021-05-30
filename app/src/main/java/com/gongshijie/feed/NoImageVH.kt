@@ -16,12 +16,15 @@ class NoImageVH(view: View) : BaseViewHolder(view) {
     override fun bindViewHolder(position: Int, newsCell: NewsCell, activity: FragmentActivity?) {
         titleTextView.text = newsCell.title
         extraTextView.text = newsCell.authorName
+        clickPosition = position
     }
 
     override fun onClickItem(itemView: View, cell: NewsCell) {
         Log.i(TAG, "onClickItem")
         ARouter.getInstance().build("/app/detail/DetailActivity")
             .withString("url", cell.url)
-            .navigation();
+            .withString("record", cell.record.toString())
+            .withString("position", ""+clickPosition)
+            .navigation()
     }
 }

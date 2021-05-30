@@ -20,10 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.gongshijie.search.SearchActivity"></activity>
         <activity
             android:name="com.gongshijie.me.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.gongshijie.cinema.TKTKActivity" />
         <activity android:name="com.gongshijie.detail.DetailActivity" />
         <activity android:name="com.gongshijie.me.MeActivity" />

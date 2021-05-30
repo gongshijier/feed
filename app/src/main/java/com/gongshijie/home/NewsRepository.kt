@@ -74,7 +74,8 @@ class NewsRepository(var newsDao: NewsCellDao) {
                                 authorName,
                                 url,
                                 thumbnailPic,
-                                type
+                                type,
+                                0
                             )
 
                         newsCellList.add(newsCell)

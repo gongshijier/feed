@@ -30,6 +30,9 @@ import java.io.FileReader
 
 
 class HomeFragment : Fragment(), BGARefreshLayout.BGARefreshLayoutDelegate {
+    var THRESHOLD_PAUSE = 200
+    var THRESHOLD_RESUME = 100
+
     var position: Int = 0
     private var pageIndex = 1
     lateinit var recyclerView: FeedRecyclerView
@@ -136,12 +139,12 @@ class HomeFragment : Fragment(), BGARefreshLayout.BGARefreshLayoutDelegate {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                Log.i("gongshijie", "onScroll ---------$dy")
-                if (dy > 1000) {
+
+                if (dy > THRESHOLD_PAUSE) {
                     context?.let { Glide.with(it).pauseRequests() }
                 }
 
-                if (dy < 200) {
+                if (dy < THRESHOLD_RESUME) {
                     context?.let { Glide.with(it).resumeRequests() }
                 }
 
@@ -162,4 +165,13 @@ class HomeFragment : Fragment(), BGARefreshLayout.BGARefreshLayoutDelegate {
         })
     }
 
+    override fun onStart() {
+        super.onStart()
+        adapter.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.onStop()
+    }
 }
